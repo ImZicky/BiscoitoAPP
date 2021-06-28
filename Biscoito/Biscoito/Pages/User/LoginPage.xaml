@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Biscoito.Pages.User.LoginPage"
+             xmlns:ext="clr-namespace:Biscoito.Extensions"
+             xmlns:res="clr-namespace:Biscoito.Properties"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" 
+             Title="Login">
+    
+    <ContentPage.Content
+        Orientation="Vertical"
+        VerticalOptions="Center"
+        HorizontalOptions="Center"        
+        >
+
+        <RelativeLayout>
+            
+            <Image
+                Source = "mainbackground.png"
+                Aspect="AspectFill"
+                RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint= "{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                />
+
+            <StackLayout
+                Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="0, 15" Spacing="10"
+                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}">
+
+                <ScrollView
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"                    
+                    >
+                    
+                    <Frame BackgroundColor="#4f281f"
+                        CornerRadius="60"
+                        Margin="20"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        WidthRequest ="350"
+                        HeightRequest="550"
+                        >
+
+                        <StackLayout >
+                            <Frame
+                               Padding="20"
+                               BackgroundColor="#ffffff"
+                               WidthRequest ="480"
+                               HeightRequest="640"
+                                CornerRadius="40">
+                                <StackLayout>
+
+                                    <Image Source="biscoitologo.png" HeightRequest="120" WidthRequest="120"/>
+                                    
+                                    <Label Text="{x:Static res:Resources.AppName}"
+                                           TextTransform="Uppercase"
+                                           FontSize="Title"
+                                           VerticalOptions="Start"
+                                           TextColor="#4f281f"
+                                           Margin="0,10,0,30"
+                                           HorizontalOptions="CenterAndExpand"
+                                           />
+
+
+                                    <Label Text="{x:Static res:Resources.EmailLabelText}"
+                                           TextTransform="None"
+                                           FontSize="18"
+                                           VerticalOptions="Start"
+                                           HorizontalOptions="Start"
+                                           TextColor="#4f281f"
+                                           />
+
+                                    <Entry IsPassword="False" 
+                                           IsEnabled="True"
+                                           IsTextPredictionEnabled="true"
+                                           IsVisible="True"
+                                           Placeholder="{x:Static res:Resources.EmailEntryPlaceholder}"
+                                           HorizontalTextAlignment="Center"
+                                           Keyboard="Email"
+                                           x:Name="EmailEntry"
+                                           Focused="EntryFocused"
+                                           Unfocused="EntryUnfocused"
+                                           TextChanged="EntryTextChanged"
+                                           Background="#ffffff"
+                                           PlaceholderColor="#4f281f"
+                                           TextColor="#4f281f"
+                                           Margin="0,0,0,10"                          
+                                           />
+
+                                    <Label Text="{x:Static res:Resources.PasswordLabelText}"
+                                           TextTransform="None"
+                                           FontSize="18"
+                                           VerticalOptions="Start"
+                                           HorizontalOptions="Start"
+                                           TextColor="#4f281f"
+                                           />
+
+                                    <Entry IsPassword="True" 
+                                           IsEnabled="True" 
+                                           IsVisible="True"
+                                           Placeholder="{x:Static res:Resources.PasswordEntryPlaceholder}"
+                                           HorizontalTextAlignment="Center"
+                                           Keyboard="Default"
+                                           x:Name="PasswordEntry"
+                                           Focused="EntryFocused"
+                                           Unfocused="EntryUnfocused"
+                                           TextChanged="EntryTextChanged"
+                                           Background="#ffffff"
+                                           TextColor="#4f281f"
+                                           PlaceholderColor="#4f281f"
+                                           Margin="0,0,0,10"
+                                           />
+
+
+                                    <ext:ExtendedLabel HorizontalOptions="Start"
+                                            Text="{x:Static res:Resources.ClickHereToShowPasswordExtendedLabel}"
+                                            TextColor="#4f281f"
+                                            Clicked="ShowPassword"
+                                            TextDecorations="Underline"
+                                            x:Name="ExtClickToShowPassword"
+                                            />
+
+
+                                    <StackLayout
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="Start"
+                                        Margin="0, 10, 0, 0"
+                                        Orientation="Horizontal"
+                                        >
+
+                                        <Frame
+                                            BackgroundColor="#4f281f"
+                                            HorizontalOptions="FillAndExpand"
+                                            Padding="0"
+                                            CornerRadius="5"                                            
+                                            >
+
+                                            <Button Text="{x:Static res:Resources.LoginButtonText}"
+                                                    TextTransform="None"
+                                                    Clicked="Login"
+                                                    HorizontalOptions="FillAndExpand"
+                                                    Margin="2"
+                                                    FontSize="15"
+                                                    CornerRadius="5"
+                                                    VerticalOptions="Start"
+                                                    BackgroundColor="#4f281f"
+                                                    TextColor="#ffffff"
+                                                    IsEnabled="True"
+                                                    IsVisible="True"
+                                                    IsTabStop="False"
+                                                    WidthRequest="150"
+                                                    />
+                                        </Frame>
+                                        
+
+                                    </StackLayout>
+
+                                    <StackLayout x:Name="LoadingIcon" IsVisible="False">
+                                        <OnPlatform x:TypeArguments="View">
+                                            <On Platform="Android">
+                                                <forms:AnimationView
+                                                    Animation="cookieloading.json"
+                                                    AnimationSource="AssetOrBundle"
+                                                    RepeatMode="Infinite"
+                                                    WidthRequest="50"
+                                                    HeightRequest="50"
+                                                    IsVisible="True"
+                                                    />
+                                            </On>
+                                            <On Platform="iOS">
+                                                <forms:AnimationView
+                                                    Animation="cookieloading.json"
+                                                    AnimationSource="AssetOrBundle"
+                                                    RepeatMode="Infinite"
+                                                    WidthRequest="50"
+                                                    HeightRequest="50"                                               
+                                                    IsVisible="True"
+                                                    />
+                                            </On>
+                                            <On Platform="UWP">
+                                                <ActivityIndicator IsVisible="True" IsRunning="True" />
+                                            </On>
+                                        </OnPlatform>
+                                    </StackLayout>
+
+
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+                </ScrollView>
+
+            </StackLayout>
+        </RelativeLayout>
+
+
+
+    </ContentPage.Content>
+</ContentPage>
