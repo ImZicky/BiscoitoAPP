@@ -1,6 +1,5 @@
-﻿using Biscoito.Service;
-using DTO;
-using Service;
+﻿using Biscoito.ViewModel;
+using Biscoito.Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +11,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using IPasswordService = Biscoito.Service.IPasswordService;
 
+
 namespace Biscoito.Pages.Password
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -19,6 +19,7 @@ namespace Biscoito.Pages.Password
     {
 
         private readonly IPasswordService _serv;
+
 
         public PasswordsListPage()
         {
@@ -28,11 +29,11 @@ namespace Biscoito.Pages.Password
             lstSenhas.ItemsSource = _serv.GetPasswordList();
         }
 
-
+        //TODO: ESCONDER MELHOR A SENHA e pensar numa maneira melhor de realizar isso
         private async void GetDecryptedPassword(object sender, ItemTappedEventArgs e)
         {
-            var pass = e.Item as PasswordDTO;
-            var senhaDescriptografada = DigitalFortressService.Decrypt(pass.Valor, "BEJLLMMT#22");
+            var pass = e.Item as Biscoito.ViewModel.Password;
+            var senhaDescriptografada = DigitalFortressService.Decrypt(pass.Valor, "TODO: TIRAR ISSO AQUI");
             await Clipboard.SetTextAsync(senhaDescriptografada);
         }
 

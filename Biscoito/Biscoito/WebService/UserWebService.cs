@@ -1,4 +1,4 @@
-﻿using DTO;
+﻿using Biscoito.ViewModel;
 using Refit;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace Biscoito.WebService
     public interface IWebServiceUserService
     {
         [Post("/login")]
-        Task<bool> Login([Body] UserLoginDTO userLoginDTO);
+        Task<bool> Login([Body] UserLogin userLoginDTO);
 
 
     }

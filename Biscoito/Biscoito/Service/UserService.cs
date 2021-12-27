@@ -1,5 +1,5 @@
-﻿using Biscoito.WebService;
-using DTO;
+﻿using Biscoito.ViewModel;
+using Biscoito.WebService;
 using Refit;
 using System;
 using System.Collections.Generic;
@@ -30,15 +30,18 @@ namespace Biscoito.Service
             try
             {
                 var webService = RestService.For<IWebServiceUserService>(_webClientOptions.GetBaseUrl());
-                return await webService.Login(new UserLoginDTO()
+                var result = await webService.Login(new UserLogin()
                 {
                     Email = email,
                     Password = password
                 });
+
+                return result;
             }
             catch (Exception e)
             {
-                return false;
+                var erro = e.Message;
+                return string.IsNullOrEmpty(erro);
             }
         }
     }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Service
+namespace Biscoito.Service
 {
     public class DigitalFortressService
     {

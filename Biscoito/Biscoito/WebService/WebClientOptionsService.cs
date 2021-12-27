@@ -16,7 +16,7 @@ namespace Biscoito.WebService
 
         public WebClientOptionsService()
         {
-            _baseUrl = "https://pokeapi.co/api/v2/";
+            _baseUrl = "https://localhost:44330/api/v1/";
         }
 
         public string GetBaseUrl()

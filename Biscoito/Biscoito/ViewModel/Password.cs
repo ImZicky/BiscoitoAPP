@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model.DTO
+namespace Biscoito.ViewModel
 {
-    public class PasswordDTO
+    public class Password
     {
         public string Nome { get; set; }
         public string Valor { get; set; }
         public string Icone { get; set; }
-    }
 
+    }
 }

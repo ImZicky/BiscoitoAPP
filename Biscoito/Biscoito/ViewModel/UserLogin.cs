@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Model.DTO
+namespace Biscoito.ViewModel
 {
-    public class UserLoginDTO
+    public class UserLogin
     {
         public string Email { get; set; }
         public string Password { get; set; }
-
     }
 }
